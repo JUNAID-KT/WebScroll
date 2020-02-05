@@ -16,6 +16,7 @@ func SetRoutes(router *gin.Engine) *gin.Engine {
 		{
 			// routes
 			wallet.GET(util.SearchURL, controller.GetURL)
+			wallet.POST(util.ScrapURL, controller.ScrapWeb)
 		}
 	}
 	return router

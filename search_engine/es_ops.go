@@ -1,33 +1,30 @@
 package search_engine
 
-/*
 import (
-	"encoding/json"
-
 	"github.com/JUNAID-KT/WebScroll/models"
 	"github.com/JUNAID-KT/WebScroll/util"
 	log "github.com/Sirupsen/logrus"
-	"github.com/olivere/elastic"
 )
 
-func (es *esEngine) SaveTransactions(doc models.Transaction) error {
+func (es *esEngine) SaveWebContent(doc models.Website) error {
 	_, err := es.Client.
 		Index().
-		Index(util.TransactionIndexName).
-		Type(util.TransactionTypeName).
+		Index(util.WebScrapIndexName).
+		Type(util.WebScrapTypeName).
 		BodyJson(doc).
 		Do(es.Ctx)
 
 	if err != nil {
-		log.WithFields(log.Fields{"method": "SaveTransactions", "Index Name": util.TransactionIndexName,
+		log.WithFields(log.Fields{"method": "SaveWebContent", "Index Name": util.WebScrapIndexName,
 			"error": err.Error()}).
-			Error("error occurred while saving transactions")
+			Error("error occurred while saving web content")
 		return err
 	}
 
 	return nil
 }
 
+/*
 // Search in DB ; matching a given term, user
 func (es *esEngine) GetTransactions(user string) (error, []models.Transaction) {
 	// Search with a term query
