@@ -16,7 +16,9 @@ func SetRoutes(router *gin.Engine) *gin.Engine {
 		{
 			// routes
 			WebScroll.GET(util.SearchURL, controller.GetURL)
+      WebScroll.POST(util.ScrapURL, controller.ScrapWeb)
 			WebScroll.GET(util.Index, controller.RenderIndexPage)
+
 		}
 	}
 	return router

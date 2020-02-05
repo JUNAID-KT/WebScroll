@@ -5,6 +5,7 @@ const (
 	ApiVersion  = ApiV1
 	ApiPrefix   = "/web_scroll"
 	SearchURL   = "search"
+	ScrapURL    = "scrap"
 	Index       = "home"
 	MaxRetries  = 5
 	SearchLimit = 10000
@@ -12,8 +13,8 @@ const (
 	FailureDesc = "FAILURE"
 	SuccessDesc = "SUCCESS"
 
-	WebsiteIndexName    = "websites"
-	WebsiteTypeName     = "content"
+	WebScrapIndexName   = "websites"
+	WebScrapTypeName    = "content"
 	ValidationFailedMsg = "Invalid Request"
 	BindingFailedMsg    = "Request binding failed"
 )

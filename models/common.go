@@ -9,6 +9,6 @@ type StatusResponse struct {
 	DescriptionCode string `json:"description_code"`
 	Description     string `json:"description"`
 }
-type TransactionByUser struct {
-	User string `json:"from"`
+type UrlScrapRequest struct {
+	URL string `json:"url"`
 }

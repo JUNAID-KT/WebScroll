@@ -1,13 +1,29 @@
 package util
 
 import (
+	"io/ioutil"
 	"math/rand"
+	"net/http"
 	"time"
 
 	"github.com/JUNAID-KT/WebScroll/models"
 	log "github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
 )
+
+func MakeRequest(URL string) (string, error) {
+	// Make request
+	response, err := http.Get("https://" + URL)
+	if err != nil {
+		return "", err
+	}
+
+	defer response.Body.Close()
+	// Get the response body as a string
+	dataInBytes, err := ioutil.ReadAll(response.Body)
+	pageContent := string(dataInBytes)
+	return pageContent, nil
+}
 
 //  SetStatus : setting models.Status
 func SetStatus(statusCode int, descriptionCode string, description string) models.Status {
