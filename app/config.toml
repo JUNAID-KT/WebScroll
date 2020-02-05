@@ -1,4 +1,0 @@
-#TOML config file
-Server      = "localhost:8080"
-LogLevel    = 4
-ElasticAddress = "http://localhost:9200"
