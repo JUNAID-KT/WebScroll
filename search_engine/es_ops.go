@@ -47,7 +47,7 @@ func (es *esEngine) GetURL(text string) (error, string) {
 		for _, hit := range searchResult.Hits.Hits {
 			// hit.Index contains the name of the index
 			var websites models.Website
-			// Deserialize hit.Source into a Transaction
+			// Deserialize hit.Source
 			err := json.Unmarshal(*hit.Source, &websites)
 			if err != nil {
 				// Deserialization failed

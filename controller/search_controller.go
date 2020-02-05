@@ -11,7 +11,7 @@ import (
 
 var GetUrl = "GetURL"
 
-// Handler for getting transactions
+// Handler for getting URL based on text input
 func GetURL(context *gin.Context) {
 	var apiRequest models.SearchRequest
 	if err := context.BindJSON(&apiRequest); err != nil {
