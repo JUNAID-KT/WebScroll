@@ -6,6 +6,7 @@ const (
 	ApiPrefix   = "/web_scroll"
 	SearchURL   = "search"
 	ScrapURL    = "scrap"
+	Index       = "home"
 	MaxRetries  = 5
 	SearchLimit = 10000
 

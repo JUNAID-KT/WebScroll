@@ -12,6 +12,7 @@ import (
 func InitRoutes() *gin.Engine {
 	// Start HTTP server
 	router := gin.Default()
+	router.LoadHTMLGlob("./template/*")
 	router = SetRoutes(router)
 
 	router.NoRoute(func(c *gin.Context) {

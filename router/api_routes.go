@@ -12,11 +12,13 @@ func SetRoutes(router *gin.Engine) *gin.Engine {
 
 	v1 := router.Group(util.ApiVersion)
 	{
-		wallet := v1.Group(util.ApiPrefix)
+		WebScroll := v1.Group(util.ApiPrefix)
 		{
 			// routes
-			wallet.GET(util.SearchURL, controller.GetURL)
-			wallet.POST(util.ScrapURL, controller.ScrapWeb)
+			WebScroll.GET(util.SearchURL, controller.GetURL)
+      WebScroll.POST(util.ScrapURL, controller.ScrapWeb)
+			WebScroll.GET(util.Index, controller.RenderIndexPage)
+
 		}
 	}
 	return router
