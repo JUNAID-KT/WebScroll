@@ -12,3 +12,10 @@ type StatusResponse struct {
 type UrlScrapRequest struct {
 	URL string `json:"url"`
 }
+type SearchRequest struct {
+	Text string `json:"text_input"`
+}
+type SearchResponse struct {
+	Status StatusResponse `json:"status"`
+	URL    string         `json:"url"`
+}

@@ -1,9 +1,12 @@
 package search_engine
 
 import (
+	"encoding/json"
+
 	"github.com/JUNAID-KT/WebScroll/models"
 	"github.com/JUNAID-KT/WebScroll/util"
 	log "github.com/Sirupsen/logrus"
+	"github.com/olivere/elastic"
 )
 
 func (es *esEngine) SaveWebContent(doc models.Website) error {
@@ -24,20 +27,18 @@ func (es *esEngine) SaveWebContent(doc models.Website) error {
 	return nil
 }
 
-/*
-// Search in DB ; matching a given term, user
-func (es *esEngine) GetTransactions(user string) (error, []models.Transaction) {
-	// Search with a term query
-	var transactions []models.Transaction
-	termQuery := elastic.NewTermQuery("from.keyword", user)
+// Search in DB ; matching for the given text input against the content
+func (es *esEngine) GetURL(text string) (error, string) {
+	match_query := elastic.NewQueryStringQuery(text)
 	searchResult, err := es.Client.Search().
-		Index(util.TransactionIndexName).
-		Query(termQuery).
+		Index(util.WebScrapIndexName).
+		Query(match_query.Field("content")).
+		Size(1).
 		Do(es.Ctx)
 	if err != nil {
-		return err, transactions
+		return err, ""
 	}
-
+	var url string
 	// searchResult is of type SearchResult and returns hits, suggestions,
 	// and all kinds of other information from Elasticsearch.
 	// Here's how you iterate through results with full control over each step.
@@ -45,19 +46,18 @@ func (es *esEngine) GetTransactions(user string) (error, []models.Transaction) {
 		// Iterate through results
 		for _, hit := range searchResult.Hits.Hits {
 			// hit.Index contains the name of the index
-			var transaction models.Transaction
-			// Deserialize hit.Source into a Transaction
-			err := json.Unmarshal(*hit.Source, &transaction)
+			var websites models.Website
+			// Deserialize hit.Source
+			err := json.Unmarshal(*hit.Source, &websites)
 			if err != nil {
 				// Deserialization failed
-				return err, transactions
+				return err, ""
 			}
-			transactions = append(transactions, transaction)
+			url = websites.URL
 		}
 	} else {
 		// No hits
-		return nil, transactions
+		return nil, ""
 	}
-	return nil, transactions
+	return nil, url
 }
-*/
