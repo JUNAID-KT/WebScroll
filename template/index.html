@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script >
+function GetURL() {
+ 
+  const url = "http://localhost:8080/v1.0/web_scroll/search";
+  fetch(url, {
+    method : "POST",
+    body : JSON.stringify({
+         text_input : document.getElementById('input_text').value,  
+    })}).then(response => response.json()
+    ).then(data => {
+      var result = "";
+      for (var p in data) {
+        if( data.hasOwnProperty(p) ) {
+          if( p=="url"){
+            result += p + " : " + data[p];
+          }
+        } 
+      }              
+      document.getElementById("result").innerHTML = result;
+            
+  });
+}
+</script> 
 <title>Web Scroll</title>
 </head>
 <body>
-    <script src="../js/script.js"></script> 
-    <form>
         Search:<br>
-        <input type="text" name="search"><br>
+        <input id="input_text" type="text" name="search"><br>
         <button type="submit" onclick="GetURL()">Search</button>
-    </form> 
+    
     <h1 id="result">Result</h1>
 </body>
 </html> 
