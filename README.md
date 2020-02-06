@@ -1,4 +1,4 @@
-**eWallet**
+**WebSCroll**
 ----
     
 * **Description**
@@ -16,4 +16,11 @@
       1. Clone the project
            git clone https://github.com/JUNAID-KT/WebScroll
       2. Run the project.
-           $make
+           run the following commands
+           make setup 
+               to download all the dependenicies
+           make run
+               to run the project
+           
+           to access the home page go to http://localhost:8080/v1.0/web_scroll/home
+      

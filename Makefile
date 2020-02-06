@@ -1,4 +1,5 @@
 #makefile
-PHONY: run/cmd
-run/cmd:
-	@go run cmd/main.go
+setup:
+	dep ensure
+run:
+	go run cmd/main.go

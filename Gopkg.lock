@@ -10,20 +10,6 @@
   version = "v0.3.1"
 
 [[projects]]
-  branch = "master"
-  digest = "1:d304b894df452a48799a14a31ff2d969abab2bfff5970c14b19082ba0a5c9388"
-  name = "github.com/JUNAID-KT/eWallet"
-  packages = [
-    "app",
-    "controller",
-    "models",
-    "search_engine",
-    "util",
-  ]
-  pruneopts = "UT"
-  revision = "5adec558524a4964586ce1fb87f28a9c3e926a69"
-
-[[projects]]
   digest = "1:04457f9f6f3ffc5fea48e71d62f2ca256637dee0a04d710288e27e05c8b41976"
   name = "github.com/Sirupsen/logrus"
   packages = ["."]
@@ -197,9 +183,6 @@
   analyzer-version = 1
   input-imports = [
     "github.com/BurntSushi/toml",
-    "github.com/JUNAID-KT/eWallet/controller",
-    "github.com/JUNAID-KT/eWallet/models",
-    "github.com/JUNAID-KT/eWallet/util",
     "github.com/Sirupsen/logrus",
     "github.com/gin-gonic/gin",
     "github.com/olivere/elastic",
